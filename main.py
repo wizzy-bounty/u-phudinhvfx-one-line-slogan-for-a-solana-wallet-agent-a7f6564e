@@ -11,11 +11,14 @@ import os
 SLOGAN = "Solana is quick. Your wallet agent is quicker to double-check."
 
 
-def main() -> None:
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+def write_entry(out_dir: str) -> None:
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as fh:
         fh.write(SLOGAN)
+
+
+def main() -> None:
+    write_entry(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
 
 
 if __name__ == "__main__":
